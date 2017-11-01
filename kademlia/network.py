@@ -38,6 +38,7 @@ class Server(object):
         self.log = Logger(system=self)
         self.storage = storage or ForgetfulStorage()
         self.node = Node(id or digest(random.getrandbits(255)))
+        print(random.getrandbits(255))
         self.protocol = KademliaProtocol(self.node, self.storage, ksize)
         self.refreshLoop = LoopingCall(self.refreshTable).start(3600)
 

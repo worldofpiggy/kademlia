@@ -10,8 +10,8 @@ from twisted.internet import defer
 def digest(s):
     if not isinstance(s, str):
         s = str(s)
-    return hashlib.sha1(s).digest()
-
+    return hashlib.sha1(s.encode()).digest() 
+    
 
 def deferredDict(d):
     """

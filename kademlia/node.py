@@ -1,13 +1,15 @@
 from operator import itemgetter
 import heapq
 
+import binascii
 
 class Node:
     def __init__(self, id, ip=None, port=None):
         self.id = id
         self.ip = ip
         self.port = port
-        self.long_id = long(id.encode('hex'), 16)
+        self.long_id = int(binascii.hexlify(id), 16)
+        #self.long_id = int(id.encode('hex'), 16)
 
     def sameHomeAs(self, node):
         return self.ip == node.ip and self.port == node.port

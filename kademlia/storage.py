@@ -1,6 +1,14 @@
 import time
-from itertools import izip
-from itertools import imap
+try:
+    from itertools import izip
+except:
+    izip = zip
+
+try:
+    from itertools import imap
+except:
+    imap = map
+    
 from itertools import takewhile
 import operator
 from collections import OrderedDict
@@ -39,9 +47,8 @@ class IStorage(Interface):
         Get the iterator for this storage, should yield tuple of (key, value)
         """
 
-
 class ForgetfulStorage(object):
-    implements(IStorage)
+    #implements(IStorage)
 
     def __init__(self, ttl=604800):
         """
